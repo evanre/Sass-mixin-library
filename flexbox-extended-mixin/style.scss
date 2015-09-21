@@ -1,0 +1,87 @@
+@import "flex-extend-mixin";
+
+// variables
+// colors
+$color-arr: (
+	"whitish": #fff,
+	"oranges": #f90,
+	"reds": #f33,
+	"greens": #9c0,
+	"blues": #36f,
+	"grays": #ccc,
+	"darkish": #888,
+);
+@function col($color){
+	@return map-get($color-arr, $color)
+};
+// variables
+
+p {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 18px;
+}
+
+.descr {
+	color: col(whitish);
+	padding: 10px;
+}
+
+.text {
+	margin: 40px auto;
+	width: 600px;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+[class*="container-"] {
+	border: 1px solid col(grays);
+	margin: 20px;
+}
+
+[class*="item-"] {
+	border: 1px solid col(darkish);
+}
+
+.container-1 {
+	@include flex(null, wrap, flex-start, flex-start, null);
+	background-color: col(oranges);
+}
+
+.container-2 {
+	@include flex(column, null, flex-end, center, null);
+	background-color: col(reds);
+}
+
+.container-3 {
+	@include flex(column, wrap, space-between, null, null);
+	background-color: col(greens);
+}
+
+.container-4 {
+	@include flex(null, null, space-between, flex-start, null);
+	background-color: col(blues);
+}
+
+.container-5 {
+	height: 240px;
+	@include flex(null, wrap, flex-start, flex-start, null);
+	background-color: col(grays);
+	.item-1 {
+		@include flex-child(null, 1, 1, auto, null);
+	}
+	.item-2 {
+		@include flex-child(null, null, null, null, flex-start);
+	}
+	.item-3 {
+		@include flex-child(null, null, null, null, center);
+	}
+	.item-4 {
+		@include flex-child(2, null, null, null, null);
+		.descr {
+			color: col(reds);
+		}
+	}
+	.item-5 {
+		@include flex-child(null, null, null, null, flex-end);
+	}
+}

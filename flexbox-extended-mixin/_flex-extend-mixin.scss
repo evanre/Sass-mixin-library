@@ -1,0 +1,68 @@
+// Author: Eugene Zhuchenko
+// website: zhuchenko.pp.ua
+// Flex mixin extendeds properties from placeholders, that you have only one
+// property for all same blocks.
+// To see how it works, open demo page.
+
+%flex {display: flex;}
+%flex-direction-row {flex-direction: row;}
+%flex-direction-row-reverse {flex-direction: row-reverse;}
+%flex-direction-column {flex-direction: column;}
+%flex-direction-column-reverse {flex-direction: column-reverse;}
+%flex-wrap-nowrap {flex-wrap: nowrap;}
+%flex-wrap-wrap {flex-wrap: wrap;}
+%flex-wrap-wrap-reverse {flex-wrap: wrap-reverse;}
+%justify-content-flex-start {justify-content: flex-start;}
+%justify-content-flex-end {justify-content: flex-end;}
+%justify-content-center {justify-content: center;}
+%justify-content-space-between {justify-content: space-between;}
+%justify-content-space-around {justify-content: space-around;}
+%align-items-stretch {align-items: stretch;}
+%align-items-flex-start {align-items: flex-start;}
+%align-items-flex-end {align-items: flex-end;}
+%align-items-center {align-items: center;}
+%align-items-baseline {align-items: baseline;}
+%align-content-stretch {align-content: stretch;}
+%align-content-flex-start {align-content: flex-start;}
+%align-content-flex-end {align-content: flex-end;}
+%align-content-center {align-content: center;}
+%align-content-space-between {align-content: space-between;}
+%align-content-space-around {align-content: space-around;}
+
+// If you don't need some property of flex container, or this property comes by default,
+// just set the null on it, it does not parse this property.
+// Include examples:
+// @include flex(null, wrap, space-between, null, null)
+// @include flex(column, null, flex-start, null, null)
+// @include flex(null, null, space-around, null, null)
+@mixin flex($direct, $wrap, $justify, $align, $content){
+	@extend %flex; // main property, attach in all flex mixins
+	@if $direct != null {
+		@extend %flex-direction-#{$direct}; // row(default - null), row-reverse, column, column-reverse;
+	}
+	@if $wrap != null {
+		@extend %flex-wrap-#{$wrap}; // nowrap(default - null), wrap, wrap-reverse;
+	}
+	@if $justify != null {
+		@extend %justify-content-#{$justify}; // flex-start(default - null), flex-end, center, space-between, space-around;
+	}
+	@if $align != null {
+		@extend %align-items-#{$align}; // stretch(default - null), flex-start, flex-end, center, baseline;
+	}
+	@if $content != null {
+		@extend %align-content-#{$content}; // stretch(default - null), flex-start, flex-end, center, space-between, space-around;
+	}
+}
+// Simple flex-child mixin, set properties for children of flex-containers.
+// Not extends, because have numerical parameters.
+// if you will use one of flex-child parameters (flex-grow, flex-shrink, flex-basis),
+// e.g. you need to change grow property of child,
+// that also you need set rest parameters by defaults (flex: 1, 1, auto)
+// Include examples:
+// @include flex-child(1, 1, 0, 200px, center);
+// @include flex-child(5, null, null, null, flex-start);
+@mixin flex-child($order: 0, $grow: 0, $shrink: 1, $basis: auto, $self: auto){
+	order: $order; // default - 0, integer
+	flex: $grow $shrink $basis; // default - 0 1 auto; (integer, integer, px)
+	align-self: $self; //auto(default - null), flex-start, flex-end, center, baseline, stretch;
+}

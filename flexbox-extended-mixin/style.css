@@ -1,0 +1,110 @@
+.container-1, .container-2, .container-3, .container-4, .container-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.container-2, .container-3 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.container-1, .container-3, .container-5 {
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+
+.container-1, .container-5 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
+.container-2 {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+.container-3, .container-4 {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.container-1, .container-4, .container-5 {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+.container-2 {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+p {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px; }
+
+.descr {
+  color: #fff;
+  padding: 10px; }
+
+.text {
+  margin: 40px auto;
+  width: 600px;
+  font-size: 24px;
+  font-weight: 700; }
+
+[class*="container-"] {
+  border: 1px solid #ccc;
+  margin: 20px; }
+
+[class*="item-"] {
+  border: 1px solid #888; }
+
+.container-1 {
+  background-color: #f90; }
+
+.container-2 {
+  background-color: #f33; }
+
+.container-3 {
+  background-color: #9c0; }
+
+.container-4 {
+  background-color: #36f; }
+
+.container-5 {
+  height: 240px;
+  background-color: #ccc; }
+  .container-5 .item-1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto; }
+  .container-5 .item-2 {
+    -webkit-align-self: flex-start;
+        -ms-flex-item-align: start;
+            align-self: flex-start; }
+  .container-5 .item-3 {
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center; }
+  .container-5 .item-4 {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2; }
+    .container-5 .item-4 .descr {
+      color: #f33; }
+  .container-5 .item-5 {
+    -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+            align-self: flex-end; }
+
+/*# sourceMappingURL=style.css.map */
